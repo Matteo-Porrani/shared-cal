@@ -1,0 +1,22 @@
+body {
+    font-family: 'Montserrat', sans-serif;
+}
+
+.cal-head-cell {
+    width: calc(100%/7);
+    height: 30px;
+    border: 1px solid #bcd;
+}
+
+.cal-cell {
+    width: calc(100%/7);
+    height: 80px;
+    border: 1px solid #bcd;
+}
+
+.padding-cell {
+    color: white;
+}
+
+
+
