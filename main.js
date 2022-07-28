@@ -36,6 +36,7 @@ const buttonHandler = {
             if (monthParams.month < 0) monthParams.month = 11;
 
             renderer.displayMonth();
+            cellProvider.initCells();
 
         });
     }
