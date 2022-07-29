@@ -16,7 +16,7 @@
           integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
 
     <link rel="stylesheet" href="style.css">
-    <title>Calendrier partagé</title>
+    <title>Calendrier</title>
 </head>
 <body>
 
@@ -27,7 +27,7 @@
                 <button id="prevBtn" class="btn btn-outline-dark fw-bold fs-3">&lt;</button>
             </div>
             <div class="col-4 text-center">
-                <h4 id="calendar-title" class="fw-bold">Calendrier partagé</h4>
+                <h4 id="calendar-title" class="fw-bold">Calendrier</h4>
                 <h6 id="calendar-count" class="p-2"></h6>
             </div>
             <div class="col-4 start">
@@ -43,7 +43,7 @@
         <div class="row">
             <div class="col">
                 <table class="w-100 border border-dark border-2">
-                    <thead class="bg-warning fw-bold">
+                    <thead class="bg-secondary text-light fw-bold">
                     <tr class="d-flex text-center">
                         <td class="cal-head-cell">L</td>
                         <td class="cal-head-cell">M</td>
@@ -58,14 +58,54 @@
                     <tbody id="calendar-body">
 
                     </tbody>
+
                 </table>
             </div>
         </div>
     </div>
 </section>
 
-<script src="main.js" type="module"></script>
+
+
+
+<template id="weekTemplate">
+    <tr class="d-flex text-center">
+        <td class="cal-cell"></td>
+        <td class="cal-cell"></td>
+        <td class="cal-cell"></td>
+        <td class="cal-cell"></td>
+        <td class="cal-cell"></td>
+        <td class="cal-cell"></td>
+        <td class="cal-cell"></td>
+    </tr>
+    <div class="row-banner d-none bg-info" style="height: 80px;"></div>
+</template>
+
+<!--<section class="font-monospace mt-5" style="background-color: #bcd;">-->
+<!--    <div class="container">-->
+<!--        <div class="row">-->
+<!--            <div class="col">-->
+<!--                <p>Jour de ref : <span id="refDate" class="fw-bold"></span></p>-->
+<!--                <hr>-->
+<!--                <p>Mois : <span id="month" class="fw-bold"></span></p>-->
+<!--                <p>Total jours : <span id="totDays" class="fw-bold"></span></p>-->
+<!--                <hr>-->
+<!--                <p>1er jour du mois : <span id="firstDay" class="fw-bold"></span></p>-->
+<!--                <p>cellules vides au début : <span id="paddStart" class="fw-bold"></span></p>-->
+<!--                <hr>-->
+<!--                <p>Dernier jour du mois : <span id="lastDay" class="fw-bold"></span></p>-->
+<!--                <p>cellules vides à la fin : <span id="paddEnd" class="fw-bold"></span></p>-->
+<!--                <hr>-->
+<!--                <p>Nombre de rangées : <span id="nbOfRows" class="fw-bold"></span></p>-->
+<!--            </div>-->
+<!--        </div>-->
+<!--    </div>-->
+<!--</section>-->
+
+<!--<script src="main.js" type="module"></script>-->
 <!--<script src="dummy.js"></script>-->
+<script src="https://unpkg.com/dayjs@1.8.21/dayjs.min.js"></script>
+<script src="build.js"></script>
 
 </body>
 </html>
