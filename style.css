@@ -12,11 +12,13 @@ body {
     width: calc(100%/7);
     height: 80px;
     border: 1px solid #bcd;
+
+    color: #bbccdd;
 }
 
 .padding-cell {
-    color: #8c8;
-    background: #8c8;
+    color: navajowhite;
+    background: navajowhite;
 }
 
 

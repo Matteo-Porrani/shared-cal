@@ -1,9 +1,26 @@
-const refDate = dayjs("2022-01-01");
+const events = [
+    { start_date: "2022-09-05T20:30:00+02:00" },
+    { start_date: "2022-09-14T20:30:00+02:00" },
+    { start_date: "2022-09-15T20:30:00+02:00" },
+    { start_date: "2022-09-16T20:30:00+02:00" },
+    { start_date: "2022-09-16T20:30:00+02:00" },
+    { start_date: "2022-09-21T20:30:00+02:00" },
+    { start_date: "2022-09-25T20:30:00+02:00" },
+];
+
+
+
+
+
+// const refDate = dayjs("2022-01-01");
+// const refDate = dayjs("2022-09-12T20:30:00+02:00");
+const refDate = dayjs(events[0].start_date);
+
+
 
 // utility function (to get sunday as 7)
 const filterIndex = (index) => {
-    if (index === 0) return 7;
-    return index;
+    return (index === 0) ? 7 : index;
 }
 
 
@@ -53,9 +70,10 @@ const monthBuilder = {
         const weeksArray = monthBuilder.getWeeks(monthArray, nbOfRows);
 
         monthBuilder.clearRows();
-        monthBuilder.insertRows(weeksArray);
+        monthBuilder.insertRows(weeksArray, refDate.format('MM'), refDate.format('YYYY'));
 
         monthBuilder.initCellsListener();
+        monthBuilder.readEvents(events);
     },
 
     clearRows() {
@@ -97,6 +115,8 @@ const monthBuilder = {
         fillActiveDates();
         fillPaddEnd();
 
+        console.log(month);
+
         return month;
     },
 
@@ -111,7 +131,7 @@ const monthBuilder = {
         return chunks;
     },
 
-    insertRows(chunks) {
+    insertRows(chunks, month, year) {
 
         const createRow = (weekdays, rowNumber) => {
             // get template
@@ -124,7 +144,11 @@ const monthBuilder = {
                 if (weekdays[i].type === 'empty') {
                     newRow.querySelector(`td:nth-child(${i + 1})`).classList.add('padding-cell');
                 }
+
+                const dayNumber = weekdays[i].dayNb < 10 ? `0${weekdays[i].dayNb}` : weekdays[i].dayNb;
+
                 newRow.querySelector(`td:nth-child(${i + 1})`).textContent = weekdays[i].dayNb;
+                newRow.querySelector(`td:nth-child(${i + 1})`).dataset.date = `${year}-${month}-${dayNumber}`;
                 newRow.querySelector(`td:nth-child(${i + 1})`).dataset.target = rowNumber;
             }
 
@@ -149,7 +173,20 @@ const monthBuilder = {
                document.getElementById(`banner${e.target.dataset.target}`).classList.toggle('d-none');
            });
         });
-    }
+    },
+
+    readEvents(events) {
+        const cells = document.querySelectorAll('.cal-cell');
+
+
+        events.forEach(event => {
+            const eventDate = event.start_date.split('T')[0];
+
+            document.querySelector(`[data-date="${eventDate}"]`).classList.add('text-dark');
+            document.querySelector(`[data-date="${eventDate}"]`).classList.add('fw-bold');
+            console.log(eventDate);
+        });
+    },
 
 }
 
